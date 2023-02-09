@@ -42,9 +42,9 @@ variable "health_check_grace_period_seconds" {
 variable "private_subnets" {
   type = list(string)
 }
-variable "service_image" {
-  type = string
-}
+#variable "service_image" {
+#  type = string
+#}
 #variable "load_balancer" {
 #  type = map(object({
 #    target_group_arn = string
@@ -73,4 +73,7 @@ variable "load_balancer_arn" {
 }
 variable "service_host" {
   type = string
+}
+variable "listener_port" {
+  type = number
 }

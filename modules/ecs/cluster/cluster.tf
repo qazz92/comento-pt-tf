@@ -6,13 +6,13 @@ module "cluster" {
   fargate_capacity_providers = {
     FARGATE = {
       default_capacity_provider_strategy = {
-        base = 1
+        base   = 1
         weight = 0
       }
     }
     FARGATE_SPOT = {
       default_capacity_provider_strategy = {
-        base = 0
+        base   = 0
         weight = 1
       }
     }

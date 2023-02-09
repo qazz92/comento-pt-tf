@@ -1,8 +1,8 @@
-terraform {
-  backend "s3" {
+locals {
+  remote_state_config = {
     bucket  = "tfstate.rokhun.com"
-    key     = "alpha/proxy/terraform.state"
     region  = "ap-northeast-2"
     profile = "rokhun"
   }
+  service_name = "nestjs"
 }

@@ -8,7 +8,7 @@ resource "aws_lb_target_group" "this" {
 
 resource "aws_lb_listener" "this" {
   load_balancer_arn = var.load_balancer_arn
-  port              = "80"
+  port              = var.listener_port
   protocol          = "HTTP"
   default_action {
     type             = "forward"

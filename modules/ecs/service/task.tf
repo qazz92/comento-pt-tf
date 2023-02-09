@@ -1,7 +1,7 @@
 locals {
   service_container_definition = jsonencode({
     name  = var.service_name
-    image = var.service_image
+    image = "${module.ecr_repository.repository_url}:latest"
     cpu   = 0
     portMappings = var.service_port != null ? [{
       hostPort      = var.service_port
@@ -40,7 +40,7 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "this" {
-  family                   = "${var.service_name}-${formatdate("YYYYMMDDHHmmss", timestamp())}"
+  family                   = "alpha-${var.service_name}"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = var.ecs_cpu
@@ -49,10 +49,4 @@ resource "aws_ecs_task_definition" "this" {
 
   execution_role_arn       = aws_iam_role.execution.arn
   task_role_arn            = aws_iam_role.task.arn
-
-  lifecycle {
-    ignore_changes = [
-      family
-    ]
-  }
 }

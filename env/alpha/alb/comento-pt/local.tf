@@ -4,4 +4,5 @@ locals {
     region  = "ap-northeast-2"
     profile = "rokhun"
   }
+  service_name = "nestjs"
 }
